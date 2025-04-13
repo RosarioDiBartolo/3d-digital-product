@@ -2,10 +2,10 @@ import {
   AuthenticatedMedusaRequest,
   MedusaResponse,
 } from "@medusajs/framework";
-import { addDigitalProductMediasSchema, deleteDigitalProductMediasSchema } from "src/api/validation-schemas";
-import addDigitalProductMediasWorkflow from "src/workflows/add-digital-product-medias";
-import { CreateDigitalProductMediaInput } from "src/workflows/create-digital-product/steps/create-digital-product-medias";
-import deleteDigitalProductMediasWorkflow from "src/workflows/delete-digital-product-medias copy";
+import { addDigitalProductMediasSchema, deleteDigitalProductMediasSchema } from "../../../../validation-schemas";
+import addDigitalProductMediasWorkflow from "../../../../../workflows/add-digital-product-medias";
+import { CreateDigitalProductMediaInput } from "../../../../../workflows/create-digital-product/steps/create-digital-product-medias";
+import deleteDigitalProductMediasWorkflow from "../../../../../workflows/delete-digital-product-medias copy";
 
 import { z } from "zod"
 

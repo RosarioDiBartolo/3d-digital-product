@@ -1,7 +1,7 @@
 import { AuthenticatedMedusaRequest, MedusaResponse } from "@medusajs/framework"
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
-import { DIGITAL_PRODUCT_MODULE } from "src/modules/digital-product"
-import DigitalProductModuleService from "src/modules/digital-product/service"
+import { DIGITAL_PRODUCT_MODULE } from "../../../../modules/digital-product"
+import DigitalProductModuleService from "../../../../modules/digital-product/service"
 
 export const GET = async (
   req: AuthenticatedMedusaRequest,
