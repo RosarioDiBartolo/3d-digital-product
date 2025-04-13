@@ -62,7 +62,7 @@ const DigitalProductsPage = () => {
       <div className="flex justify-between items-center mb-4">
         {/* Replace the TODO with the following */}
         <Heading level="h2">Digital Products</Heading>
-        <Drawer
+        {/* <Drawer
           open={open}
           onOpenChange={(openChanged) => setOpen(openChanged)}
         >
@@ -91,7 +91,7 @@ const DigitalProductsPage = () => {
               />
             </Drawer.Body>
           </Drawer.Content>
-        </Drawer>
+        </Drawer> */}
       </div>
       <Table>
         <Table.Header>
