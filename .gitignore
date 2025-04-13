@@ -16,7 +16,7 @@ package-lock.json
 medusa-db.sql
 build
 .cache
-
+.medusa
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
