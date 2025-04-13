@@ -17,43 +17,60 @@ export const POST = async (
   req: AuthenticatedMedusaRequest<AddMediasRequestBody>,
   res: MedusaResponse
 ) => {
-
-  console.log( req.validatedBody.medias)
-  const {
-    result: { digital_product_medias },
-  } = await addDigitalProductMediasWorkflow(req.scope).run({
-    input: {
-      digital_product_id:   req.params.id,
-      medias: req.validatedBody.medias  as Omit<CreateDigitalProductMediaInput, "digital_product_id">[],
-         },
-  });
-  res.json({
-    digital_product_medias,
-  });
-}; 
+  try {
+    console.log( req.validatedBody.medias)
+    const {
+      result: { digital_product_medias },
+    } = await addDigitalProductMediasWorkflow(req.scope).run({
+      input: {
+        digital_product_id:   req.params.id,
+        medias: req.validatedBody.medias   as Omit<CreateDigitalProductMediaInput, "digital_product_id">[],
+          },
+    });
+    res.json({
+      digital_product_medias,
+    });
+  } catch (error) {
+    console.error("Error adding digital product medias:", error);
+    res.status(500).json({
+      error: {
+        message: "An error occurred while adding digital product medias",
+        details: error instanceof Error ? error.message : String(error),
+      },
+    });
+  }
+};
 type DeleteMediasRequestBody = z.infer<
-  typeof deleteDigitalProductMediasSchema 
+  typeof deleteDigitalProductMediasSchema
 >
 
 export const DELETE = async (
   req: AuthenticatedMedusaRequest<DeleteMediasRequestBody>,
   res: MedusaResponse
 ) => {
+  const {id} = req.params
 
-  const {id} = req.params 
+  try {
+    const {
+      result: { deleted_medias },
+    } = await deleteDigitalProductMediasWorkflow(req.scope).run({      input: {
+        digital_product_id: id,
+        medias: req.validatedBody.medias   ,
 
-  const {
-    result: { deleted_medias },
-  } = await deleteDigitalProductMediasWorkflow(req.scope).run({    input: {
-      digital_product_id: id,
-      medias: req.validatedBody.medias   ,
-      
-    }
-  })
+      }
+    })
 
-   
-  res.json({
-    deleted_medias,
-  });
+
+    res.json({
+      deleted_medias,
+    });
+  } catch (error) {
+    console.error("Error deleting digital product medias:", error);
+    res.status(500).json({
+      error: {
+        message: "An error occurred while deleting digital product medias",
+        details: error instanceof Error ? error.message : String(error),
+      },
+    });
+  }
 };
-
